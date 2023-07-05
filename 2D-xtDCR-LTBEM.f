@@ -63,7 +63,7 @@ c  DISCRETISATION OF THE BOUNDARY
           ddy=sqhi2(k)-sqlo2(k)
           dds=dsqrt( ddx*ddx+ddy*ddy )
           sqn1(k)=ddy/dds
-          sqn2(k)=-ddx/dsd
+          sqn2(k)=-ddx/dds
         enddo
       enddo
 c  Calculate Stehfest coefficients v_m
@@ -381,7 +381,7 @@ c  ------------------------------------------------------------------------
       else
       endif
       roots=cmplx(-rk12/rk22,dsqrt(det)/rk22)
-      rtdsot = real(roots)
+      rtsdot = real(roots)
       rtsddot = aimag(roots)
       return
       end
@@ -473,7 +473,7 @@ c  ------------------------------------------------------------------------
         endif
       enddo
       h=abs(qkm1-qk)
-      smp=smp*h/98600.0d0
+      smp=smp*h/89600.0d0
       smg=smg*h/89600.0d0
       smpv=smpv*h/89600.0d0
       if (ints.eq.1) then
@@ -671,7 +671,7 @@ c  ------------------------------------------------------------------------
       FFK0 = FK0(x)
       FFK1 = FK1(x)
       Phi12 = PPhi2*(vx/(2.d0*CapD)-Cmu*FFK1/FFK0*dR1)
-     &   -PPhi*Cmu*(Cmu*dR2*dR2*(-1.d0-FFK1/FFK0/Cmu/r+
+     &   -PPhi*Cmu*(Cmu*dR1*dR2*(-1.d0-FFK1/FFK0/Cmu/r+
      &   FFK1**2.d0/FFK0**2.d0)+FFK1/FFK0*dR12)
       return
       end
@@ -989,4 +989,3 @@ c  ------------------------------------------------------------------------
       return
       end
 c  ------------------------------------------------------------------------
-
